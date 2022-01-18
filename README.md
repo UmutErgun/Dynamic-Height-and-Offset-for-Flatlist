@@ -37,8 +37,25 @@ const renderItem = useCallback(
     index,
   });
 ```
-  
-  ##### flatList  
+
+
+##### onScrollToIndexFailed 
+
+```js
+
+onScrollToIndexFailed={(error) => {
+    flatListRef.scrollToOffset({
+        offset: error.averageItemLength * error.index, animated: true});
+              setTimeout(() => {
+                if (msgState.length !== 0 && flatListRef !== null) {
+                  flatListRef.scrollToIndex({index: error.index,animated: true});
+                }
+              }, 100);
+            }}
+```
+
+
+##### flatList  
 
 ```js
   
